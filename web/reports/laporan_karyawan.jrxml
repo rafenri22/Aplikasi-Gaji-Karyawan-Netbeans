@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Laporan Karyawan" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <parameter name="ktp_param" class="java.lang.String"/>
+    <parameter name="kode_pekerjaan_param" class="java.lang.String"/>
+    <parameter name="ruang_param" class="java.lang.Integer"/>
+    <parameter name="TTD_IMAGE" class="java.io.InputStream"/>
+    <queryString>
+        <![CDATA[SELECT ktp, nama, ruang, kode_pekerjaan 
+        FROM tbkaryawan 
+        WHERE 
+            ($P{ktp_param} IS NULL OR ktp = $P{ktp_param})
+            AND ($P{kode_pekerjaan_param} IS NULL OR kode_pekerjaan = $P{kode_pekerjaan_param})
+            AND ($P{ruang_param} IS NULL OR ruang = $P{ruang_param})]]>
+    </queryString>
+    <field name="ktp" class="java.lang.String"/>
+    <field name="nama" class="java.lang.String"/>
+    <field name="ruang" class="java.lang.Integer"/>
+    <field name="kode_pekerjaan" class="java.lang.String"/>
+    <title>
+        <band height="50">
+            <staticText>
+                <reportElement x="0" y="10" width="555" height="30"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Arial" size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[LAPORAN DATA KARYAWAN PT. RAFKY FERDIAN BERJAYA]]></text>
+            </staticText>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="30">
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[KTP]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="100" y="0" width="200" height="20" backcolor="#CCCCCC"/>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Nama]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="300" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Ruang]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="400" y="0" width="155" height="20" backcolor="#CCCCCC"/>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Kode Pekerjaan]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="25">
+            <textField>
+                <reportElement x="0" y="0" width="100" height="20"/>
+                <textElement>
+                    <font fontName="Arial" size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{ktp}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="100" y="0" width="200" height="20"/>
+                <textElement>
+                    <font fontName="Arial" size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="300" y="0" width="100" height="20"/>
+                <textElement>
+                    <font fontName="Arial" size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{ruang}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="400" y="0" width="155" height="20"/>
+                <textElement>
+                    <font fontName="Arial" size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{kode_pekerjaan}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <!-- Tambahan Bagian TTD -->
+    <summary>
+                <band height="120">
+                        <textField>
+                                <reportElement x="350" y="20" width="200" height="20"/>
+                                <textElement textAlignment="Right">
+                                        <font fontName="Arial" size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA["Tangerang Selatan, " + new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id", "ID")).format(new java.util.Date())]]></textFieldExpression>
+                        </textField>
+                        <image hAlign="Center">
+                                <reportElement x="400" y="40" width="150" height="40"/>
+                                <imageExpression><![CDATA[$P{TTD_IMAGE}]]></imageExpression>
+                        </image>
+                        <staticText>
+                                <reportElement x="350" y="85" width="200" height="20"/>
+                                <textElement textAlignment="Right">
+                                        <font fontName="Arial" size="10" isBold="true"/>
+                                </textElement>
+                                <text><![CDATA[Rafky Ferdian Algiffari]]></text>
+                        </staticText>
+                        <staticText>
+                                <reportElement x="350" y="100" width="200" height="15"/>
+                                <textElement textAlignment="Right">
+                                        <font fontName="Arial" size="10"/>
+                                </textElement>
+                                <text><![CDATA[CEO PT. RAFKY FERDIAN BERJAYA]]></text>
+                        </staticText>
+                        <line>
+                                <reportElement x="400" y="80" width="150" height="1"/>
+                                <graphicElement>
+                                        <pen lineWidth="1.0"/>
+                                </graphicElement>
+                        </line>
+                </band>
+        </summary>
+</jasperReport>
