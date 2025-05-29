@@ -33,15 +33,6 @@ Buka Aplikasi Netbeans IDE 8.2 kemudian open project ini.
 ## Author
 [Rafky Ferdian Algiffari](https://github.com/rafenri22)
 
-
-## Used By
-
-This project is used by the following companies:
-
-- Universitas Pamulang
-- Program Studi Teknik Informatika 
-
-
 ## Support
 
 For support, please email me@rafkyferdian.my.id.
